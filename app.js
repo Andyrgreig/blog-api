@@ -11,4 +11,4 @@ db.once("open", () => console.log("Connected to database"));
 
 app.use(express.json());
 
-app.listen(3000, () => console.log("server started"));
+app.listen(process.env.PORT, () => console.log("Server started"));
