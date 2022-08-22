@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
-const Comment = require("comment");
+const Comment = require("./comment");
 
 //Define a schema
 const Schema = mongoose.Schema;
 
-const PostSchema = new Schema({
+const ArticleSchema = new Schema({
   title: { type: String, required: true },
   text: { type: String, required: true },
-  comments: [Comment],
+  // comments: [Comment.CommentSchema],
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -18,4 +18,4 @@ const PostSchema = new Schema({
 });
 
 // Compile model from schema
-module.exports = mongoose.model("Post", PostSchema);
+module.exports = mongoose.model("Article", ArticleSchema);
