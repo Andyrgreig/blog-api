@@ -51,6 +51,7 @@ exports.register = [
         const newUser = new User({
           username: req.body.username,
           password: hash,
+          admin: req.body.admin,
         });
 
         newUser.save().then((user) => {
@@ -94,5 +95,5 @@ exports.login = async (req, res, next) => {
 };
 
 exports.logout = (req, res) => {
-  console.log("1");
+  req.logout();
 };

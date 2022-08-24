@@ -1,5 +1,6 @@
 const express = require("express");
 const article = require("../controllers/article");
+const passport = require("passport");
 
 const router = express.Router();
 
@@ -10,12 +11,24 @@ router.get("/:id", article.GET_Article);
 router.get("/", article.GET_Articles);
 
 // POST new article
-router.post("/", article.POST_Article);
+router.post(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  article.POST_Article
+);
 
 // PATCH article
-router.patch("/:id", article.PATCH_Article);
+router.patch(
+  "/:id",
+  passport.authenticate("jwt", { session: false }),
+  article.PATCH_Article
+);
 
 // DELETE article
-router.delete("/:id", article.DELETE_Article);
+router.delete(
+  "/:id",
+  passport.authenticate("jwt", { session: false }),
+  article.DELETE_Article
+);
 
 module.exports = router;
