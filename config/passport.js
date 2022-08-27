@@ -7,14 +7,12 @@ const ExtractJwt = require("passport-jwt").ExtractJwt;
 const pathToKey = path.join(__dirname, "..", "public_key");
 const PUB_KEY = fs.readFileSync(pathToKey, "utf8");
 
-// TODO
 const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: PUB_KEY,
   algorithms: ["RS256"],
 };
 
-// TODO
 module.exports = (passport) => {
   // The JWT payload is passed into the verify callback
   passport.use(

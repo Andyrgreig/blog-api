@@ -10,11 +10,13 @@ const CommentSchema = new Schema({
     ref: "User",
     required: true,
   },
+  article: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Article",
+    required: true,
+  },
   timestamp: { type: Date, default: Date.now() },
 });
 
-// Compile model from schema
-// module.exports = mongoose.model("Comment", CommentSchema);
-
-exports.value1 = mongoose.model("Comment", CommentSchema);
-exports.value2 = CommentSchema;
+exports.Comment = mongoose.model("Comment", CommentSchema);
+exports.CommentSchema = CommentSchema;

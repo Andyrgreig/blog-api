@@ -1,6 +1,6 @@
 const express = require("express");
 const user = require("../controllers/user");
-const passport = require("passport");
+const { validateUser } = require("../lib/validator");
 
 const router = express.Router();
 
@@ -11,12 +11,9 @@ const router = express.Router();
 // router.get("/", user.getAllUsers);
 
 // POST new user
-router.post("/register", user.register);
+router.post("/register", validateUser, user.register);
 
 // GET user info (login)
 router.get("/login", user.login);
-
-// GET user logout
-router.get("/logout", user.logout);
 
 module.exports = router;
