@@ -18,5 +18,10 @@ const CommentSchema = new Schema({
   timestamp: { type: Date, default: Date.now() },
 });
 
+CommentSchema.virtual("posted").get(function () {
+  let posted = timestamp.format(this.timestamp, "DD MMM YYYY").toString();
+  return posted;
+});
+
 exports.Comment = mongoose.model("Comment", CommentSchema);
 exports.CommentSchema = CommentSchema;

@@ -29,7 +29,7 @@ exports.GET_articles = (req, res) => {
       if (err) {
         return next(err);
       }
-      res.status(200).json({ success: true, articles });
+      res.status(200).json(articles);
     });
 };
 

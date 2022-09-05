@@ -18,5 +18,11 @@ const ArticleSchema = new Schema({
   timestamp: { type: Date, default: Date.now() },
 });
 
+// Virtual for date
+ArticleSchema.virtual("posted").get(function () {
+  let posted = timestamp.format(this.timestamp, "DD MMM YYYY").toString();
+  return posted;
+});
+
 // Compile model from schema
 module.exports = mongoose.model("Article", ArticleSchema);

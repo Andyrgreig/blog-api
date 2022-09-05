@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const passport = require("passport");
+const cors = require("cors");
 
 const userRouter = require("./routes/user");
 const articleRouter = require("./routes/article");
@@ -16,6 +17,9 @@ require("./config/passport")(passport);
 
 // Initialise the passport object on every request
 app.use(passport.initialize());
+
+//Enable cross origin requests
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
